@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+
+  php:
+    build:
+      dockerfile: .docker/php/Dockerfile
+      context: .
+      target: php
+    volumes:
+      - .:/app
+
+  xdebug:
+    build:
+      dockerfile: .docker/php/Dockerfile
+      context: .
+      target: xdebug
+    environment:
+      - PHP_IDE_CONFIG=serverName=localhost
+    volumes:
+      - .:/app
+
+  composer:
+    build:
+      dockerfile: .docker/php/Dockerfile
+      context: .
+      target: composer
+    volumes:
+      - .:/app
